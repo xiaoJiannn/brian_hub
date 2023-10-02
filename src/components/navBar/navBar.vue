@@ -5,11 +5,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import navLogo from "./childCom/logo.vue"
-import statusBar from './childCom/statusBar.vue'
+import navLogo from "./childCom/logo/logo.vue";
+import statusBar from "./childCom/statusBar/statusBar.vue";
 </script>
 <style scoped>
 .nav {
+  background-color: #f6f8fa;
   position: sticky;
   top: 0;
   display: flex;
@@ -19,7 +20,6 @@ import statusBar from './childCom/statusBar.vue'
   line-height: 64px;
   text-align: center;
   border-radius: 8px;
-  border-bottom: none;
   border-bottom: 0.4px #d8dee4 solid;
 }
 </style>

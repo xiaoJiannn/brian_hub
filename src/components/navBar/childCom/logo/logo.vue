@@ -1,6 +1,7 @@
 <template>
   <div class="logo">
     <strong class="text">Brian Hub</strong>
+    
   </div>
 </template>
 <script setup lang="ts"></script>
