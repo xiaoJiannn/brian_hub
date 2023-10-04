@@ -6,3 +6,10 @@ export function momentRequest(config: momentRequestConfig) {
     method: config.method,
   });
 }
+export function publishMoment(config: momentRequestConfig) {
+  return request({
+    url: config.url,
+    method: config.method,
+    data: config.data,
+  });
+}

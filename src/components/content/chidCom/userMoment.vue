@@ -10,6 +10,7 @@
           'card-detail-padding': '10px',
           'card-padding': '10px',
           'card-user-name': item.name,
+          userId: item.id,
         }"
       ></wjCard
     ></template>

@@ -1,11 +1,10 @@
 <template>
   <div class="statusBar">
     <status></status>
-
   </div>
 </template>
 <script setup lang="ts">
-import status from './chidCom/status.vue'
+import status from "./chidCom/status.vue";
 </script>
 <style scoped>
 .statusBar {

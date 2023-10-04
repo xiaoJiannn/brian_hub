@@ -5,15 +5,17 @@
     </areaTopText>
     <template v-for="item in momentStore.moments">
       <wjCard
+        :user-id="item.user_id"
         v-bind="{
           'card-width': '750px',
           'card-padding': '20px',
           'card-content': item.content,
           'card-title': item.title,
           'card-user-name': item.name,
-          'card-createAt': item.createAt.replace('T02:25:39.000Z', ''),
+          'card-createAt': item.createAt.split('T')[0],
           'card-main-padding': '10px',
           'card-detail-padding': '10px',
+          avatarUrl: item.avatarUrl,
         }"
       >
       </wjCard>

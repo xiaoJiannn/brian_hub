@@ -1,7 +1,7 @@
 <template>
   <div class="card" :style="{ width: cardWidth, padding: cardPadding }">
     <div class="head">
-      <wjAvatar></wjAvatar>
+      <avatar :avatarUrl="avatarUrl" class="avatar" :id="userId"></avatar>
       <span class="username">{{ cardUserName }}</span>
       <span class="createAt">{{ cardCreateAt }}</span>
     </div>
@@ -18,8 +18,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import wjAvatar from "../navBar/childCom/statusBar/chidCom/avatar.vue";
-// import { reactive } from 'vue';
+import avatar from "@/components/base/avatar.vue";
 const props = defineProps({
   cardWidth: {
     type: String,
@@ -45,6 +44,10 @@ const props = defineProps({
   cardDetailPadding: {
     type: String,
   },
+  avatarUrl: {
+    type: String,
+  },
+  userId: {},
 });
 </script>
 <style scoped>
@@ -58,7 +61,7 @@ const props = defineProps({
     22.3px 22.3px 17.9px rgba(0, 0, 0, 0.007),
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.008),
     100px 100px 80px rgba(0, 0, 0, 0.01);
-  border: 0.5px #afb8c1 solid;
+  border: 0.5px solid #afb8c1;
   border-radius: 4px;
 }
 
@@ -88,8 +91,9 @@ const props = defineProps({
   font-size: 15px;
   padding-left: 10px;
   color: #939393;
-  /* vertical-align: middle; */
 }
-.isHidden {
+
+.avatar {
+  cursor: pointer;
 }
 </style>

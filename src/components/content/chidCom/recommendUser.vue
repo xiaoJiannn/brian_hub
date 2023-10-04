@@ -9,6 +9,8 @@
           'card-padding': '5px',
           'card-user-name': item.name,
           'card-width': '100px',
+          avatarUrl: item.avatarUrl,
+          userId: item.id,
         }"
       ></WjCard
     ></template>
