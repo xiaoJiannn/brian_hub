@@ -1,5 +1,10 @@
 import { defineStore } from "pinia";
-import { getHomeAvatar, getUserInfo, getUserProfile } from "@/service/user";
+import {
+  getHomeAvatar,
+  getUserInfo,
+  getUserProfile,
+  updateProfile,
+} from "@/service/user";
 import { uploadAvatar } from "@/service/uploads";
 import { registerUser } from "@/service/user";
 import { useStorge } from "@/hooks/useStorge";
@@ -26,10 +31,13 @@ export const useClient = defineStore("user", {
         method: "POST",
       });
       this.loginStatus = result.data.message;
-      const token = result.data.data.token;
-      useStorge.setItem("token", token);
       if (this.loginStatus === "请求成功") {
         router.push("/home");
+        const token = result.data.data.token;
+        useStorge.setItem("token", token);
+      } else if (this.loginStatus === "用户名或密码错误") {
+        alert("密码或用户名错误");
+        return;
       }
     },
 
@@ -59,6 +67,21 @@ export const useClient = defineStore("user", {
     },
     async uploadAvatar(config: requestConfig) {
       const result = await uploadAvatar(config);
+    },
+    async updateProfile(name: string, id: any) {
+      console.log(name, id);
+
+      const result = await updateProfile({
+        url: `/user/updateProfile/${id}`,
+        method: "POST",
+        data: {
+          name,
+          pwd: "123456",
+        },
+      });
+      if ((result.data.message = "请求成功")) {
+        location.reload();
+      }
     },
   },
 });

@@ -36,3 +36,10 @@ export function getHomeAvatar(config: userRequest) {
     method: config.method,
   });
 }
+export function updateProfile(config: userRequest) {
+  return request({
+    url: config.url,
+    method: config.method,
+    data: config.data,
+  });
+}

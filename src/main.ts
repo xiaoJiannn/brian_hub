@@ -9,4 +9,4 @@ const app = createApp(App);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component);
 }
-createApp(App).use(router).use(pinia).use(VueLazyload).mount("#app");
+createApp(App).use(pinia).use(router).use(VueLazyload).mount("#app");

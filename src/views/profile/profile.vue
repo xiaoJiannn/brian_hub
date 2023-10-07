@@ -1,5 +1,10 @@
 <template>
   <nav-bar></nav-bar>
+  <!-- <update-profile :class="{ pop: isShow }"></update-profile> -->
+  <update-profile
+    :class="{ pop: isShow }"
+    :user-name="userName"
+  ></update-profile>
   <template v-for="item in userStore.profile">
     <avatar
       :avatar-url="item.avatarUrl"
@@ -7,15 +12,11 @@
       :avatar-height="'100px'"
       :avatar-width="'100px'"
     ></avatar>
-    <div class="avatar">
-      <label for="avatarUps" class="uploadsBtn">修改头像</label>
-      <input type="file" class="uploads" id="avatarUps" ref="uploadsAvt" />
-      <button class="upload_confirm" @click="handleUploads">confirm</button>
-    </div>
+
     <div class="profile">
       <span>基本信息</span>
       <div class="base_info">
-        <edit class="edit"></edit>
+        <edit class="edit" @click="handleEdit"></edit>
         <div>姓名：{{ item.name }}</div>
         <div>
           id:<span class="user_id">{{ item.id }}</span>
@@ -27,6 +28,7 @@
 <script setup lang="ts">
 import navBar from "@/components/navBar/navBar.vue";
 import avatar from "@/components/base/avatar.vue";
+import updateProfile from "@/components/uploads/updateProfile.vue";
 import { Edit } from "@element-plus/icons-vue";
 import { useClient } from "@/stores/user";
 import { onMounted, ref } from "vue";
@@ -34,23 +36,11 @@ import { useRoute } from "vue-router";
 
 const userStore = useClient();
 const uploadsAvt = ref();
-const handleUploads = () => {
-  if (!uploadsAvt.value[0].files[0]) {
-    alert("未上传");
-    return;
-  }
-  const files = uploadsAvt.value[0].files[0];
-  const formData = new FormData();
-  formData.set("avatar", files);
-  const id = userStore.profile[0].id;
-  userStore.uploadAvatar({
-    url: `/upload/avatar/${id}`,
-    method: "POST",
-    data: formData,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+const isShow = ref(false);
+let userName = "";
+const handleEdit = () => {
+  isShow.value = true;
+  userName = userStore.profile[0].name;
 };
 onMounted(() => {
   const route = useRoute();
@@ -73,6 +63,9 @@ onMounted(() => {
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.008),
     100px 100px 80px rgba(0, 0, 0, 0.01);
 }
+.pop {
+  display: block;
+}
 .user_id {
   display: inline-block;
   margin-left: 32%;
@@ -86,7 +79,7 @@ onMounted(() => {
   width: 15px;
   position: absolute;
   top: -17px;
-  left: 80px;
+  left: 85px;
   cursor: pointer;
 }
 .base_info > div {
@@ -96,31 +89,5 @@ onMounted(() => {
   position: absolute;
   top: 75px;
   left: 30%;
-}
-.avatar {
-  width: 60px;
-  background-color: #f6f8fa;
-  height: 25px;
-  position: absolute;
-  top: 15%;
-  left: 22%;
-  text-align: center;
-  line-height: 25px;
-  font-size: 10px;
-  border-radius: 2%;
-}
-.uploadsBtn {
-  cursor: pointer;
-}
-.uploads {
-  display: none;
-}
-.upload_confirm {
-  background-color: #f6f8fa;
-  outline: none;
-  border: none;
-  width: 60px;
-  height: 30px;
-  cursor: pointer;
 }
 </style>
