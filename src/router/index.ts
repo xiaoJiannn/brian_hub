@@ -5,7 +5,6 @@ const register = () => import("@/views/panel/chidCom/register.vue");
 const userPanel = () => import("@/views/panel/userPanel.vue");
 const profile = () => import("@/views/profile/profile.vue");
 const publish = () => import("@/views/moment/publish.vue");
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",

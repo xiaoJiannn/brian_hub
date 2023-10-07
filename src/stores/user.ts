@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
 import { getHomeAvatar, getUserInfo, getUserProfile } from "@/service/user";
+import { uploadAvatar } from "@/service/uploads";
 import { registerUser } from "@/service/user";
 import { useStorge } from "@/hooks/useStorge";
+import { request as requestConfig } from "@/service/config/type";
 export const useClient = defineStore("user", {
   state: () => ({
     userInfo: [] as any[],
@@ -54,6 +56,9 @@ export const useClient = defineStore("user", {
         this.homeProfile.splice(0, 1);
       }
       this.homeProfile.push(result);
+    },
+    async uploadAvatar(config: requestConfig) {
+      const result = await uploadAvatar(config);
     },
   },
 });

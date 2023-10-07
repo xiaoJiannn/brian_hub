@@ -7,6 +7,11 @@
       :avatar-height="'100px'"
       :avatar-width="'100px'"
     ></avatar>
+    <div class="avatar">
+      <label for="avatarUps" class="uploadsBtn">修改头像</label>
+      <input type="file" class="uploads" id="avatarUps" ref="uploadsAvt" />
+      <button class="upload_confirm" @click="handleUploads">confirm</button>
+    </div>
     <div class="profile">
       <span>基本信息</span>
       <div class="base_info">
@@ -24,10 +29,29 @@ import navBar from "@/components/navBar/navBar.vue";
 import avatar from "@/components/base/avatar.vue";
 import { Edit } from "@element-plus/icons-vue";
 import { useClient } from "@/stores/user";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
 const userStore = useClient();
+const uploadsAvt = ref();
+const handleUploads = () => {
+  if (!uploadsAvt.value[0].files[0]) {
+    alert("未上传");
+    return;
+  }
+  const files = uploadsAvt.value[0].files[0];
+  const formData = new FormData();
+  formData.set("avatar", files);
+  const id = userStore.profile[0].id;
+  userStore.uploadAvatar({
+    url: `/upload/avatar/${id}`,
+    method: "POST",
+    data: formData,
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
 onMounted(() => {
   const route = useRoute();
   const params = route.params.id;
@@ -72,5 +96,31 @@ onMounted(() => {
   position: absolute;
   top: 75px;
   left: 30%;
+}
+.avatar {
+  width: 60px;
+  background-color: #f6f8fa;
+  height: 25px;
+  position: absolute;
+  top: 15%;
+  left: 22%;
+  text-align: center;
+  line-height: 25px;
+  font-size: 10px;
+  border-radius: 2%;
+}
+.uploadsBtn {
+  cursor: pointer;
+}
+.uploads {
+  display: none;
+}
+.upload_confirm {
+  background-color: #f6f8fa;
+  outline: none;
+  border: none;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
 }
 </style>

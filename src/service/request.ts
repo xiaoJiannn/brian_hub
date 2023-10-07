@@ -24,7 +24,7 @@ export function request(config: wjRequestConfig) {
   );
   instance.interceptors.response.use(
     (config) => {
-      console.log(config);
+      // console.log(config);
 
       wjLoading.close();
       if (config.data.message === "token错误") {
