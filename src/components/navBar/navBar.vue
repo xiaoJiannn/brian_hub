@@ -1,12 +1,14 @@
 <template>
   <div class="nav">
     <navLogo></navLogo>
+    <navItem></navItem>
     <statusBar></statusBar>
   </div>
 </template>
 <script setup lang="ts">
 import navLogo from "./childCom/logo/logo.vue";
 import statusBar from "./childCom/statusBar/statusBar.vue";
+import navItem from "./childCom/navItem/navItem.vue";
 </script>
 <style scoped>
 .nav {

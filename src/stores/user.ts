@@ -16,6 +16,12 @@ export const useClient = defineStore("user", {
     homeProfile: [] as any[],
     loginStatus: "",
   }),
+  getters: {
+    cleanArray() {
+      // if () {
+      // }
+    },
+  },
   actions: {
     async getUserData() {
       const result = await getUserInfo({ url: "/user", method: "GET" });

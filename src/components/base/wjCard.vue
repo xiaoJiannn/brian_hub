@@ -1,5 +1,12 @@
 <template>
-  <div class="card" :style="{ width: cardWidth, padding: cardPadding }">
+  <div
+    class="card"
+    :style="{
+      width: cardWidth,
+      padding: cardPadding,
+      paddingBottom: cardMainPaddingBottom,
+    }"
+  >
     <div class="head">
       <avatar :avatarUrl="avatarUrl" class="avatar" :id="userId"></avatar>
       <span class="username">{{ cardUserName }}</span>
@@ -13,8 +20,9 @@
           {{ cardContent }}</span
         >
       </div>
-      <slot name="card_btm"><div class="main_btm"></div></slot>
+      <!-- <slot name="card_btm"></slot> -->
     </div>
+    <slot></slot>
   </div>
 </template>
 <script setup lang="ts">
@@ -40,6 +48,10 @@ const props = defineProps({
   },
   cardMainPadding: {
     type: String,
+  },
+  cardMainPaddingBottom: {
+    type: String,
+    default: "10px",
   },
   cardDetailPadding: {
     type: String,

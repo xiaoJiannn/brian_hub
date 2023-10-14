@@ -5,6 +5,8 @@ const register = () => import("@/views/panel/chidCom/register.vue");
 const userPanel = () => import("@/views/panel/userPanel.vue");
 const profile = () => import("@/views/profile/profile.vue");
 const publish = () => import("@/views/moment/publish.vue");
+const updateLog = () => import("@/views/other/updateLog.vue");
+const tech = () => import("@/views/other/techSupport.vue");
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",
@@ -37,6 +39,15 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/moment/publish",
     component: publish,
+  },
+
+  {
+    path: "/updateLog",
+    component: updateLog,
+  },
+  {
+    path: "/techSupport",
+    component: tech,
   },
 ];
 
