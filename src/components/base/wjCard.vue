@@ -20,7 +20,6 @@
           {{ cardContent }}</span
         >
       </div>
-      <!-- <slot name="card_btm"></slot> -->
     </div>
     <slot></slot>
   </div>

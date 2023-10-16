@@ -19,7 +19,7 @@ const loading = ref<HTMLElement>();
 
 onMounted(() => {
   loadMore(loading.value!);
-  momentStore.getRecommendaData();
+  momentStore.getRecommendData();
 });
 </script>
 <style scoped>

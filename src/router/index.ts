@@ -7,6 +7,7 @@ const profile = () => import("@/views/profile/profile.vue");
 const publish = () => import("@/views/moment/publish.vue");
 const updateLog = () => import("@/views/other/updateLog.vue");
 const tech = () => import("@/views/other/techSupport.vue");
+const detail = () => import("@/views/moment/detail.vue");
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",
@@ -32,10 +33,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/profile/:id",
     component: profile,
   },
-  // {
-  //   path: "/moment",
-  //   component: publish,
-  // },
   {
     path: "/moment/publish",
     component: publish,
@@ -48,6 +45,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/techSupport",
     component: tech,
+  },
+  {
+    path: "/moment/detail",
+    component: detail,
   },
 ];
 

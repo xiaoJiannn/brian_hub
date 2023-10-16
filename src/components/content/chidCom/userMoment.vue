@@ -3,10 +3,10 @@
     <areaTopText>
       <template #text>你最近的动态</template>
     </areaTopText>
-    <template v-for="item in userStore.userInfo">
+    <template v-for="item in momentStore.userMoment">
       <wjCard
         v-bind="{
-          'card-content': testText,
+          'card-content': item.title,
           'card-detail-padding': '10px',
           'card-padding': '10px',
           'card-user-name': item.name,
@@ -20,7 +20,14 @@
 import wjCard from "@/components/base/wjCard.vue";
 import areaTopText from "./areaTopText.vue";
 import { useClient } from "@/stores/user";
+import { useMoment } from "@/stores/moment";
+import { onMounted } from "vue";
 const userStore = useClient();
+const momentStore = useMoment();
+onMounted(() => {
+  momentStore.getUserMoment();
+});
+
 const testText = "个人第一条动态";
 </script>
 <style scoped>

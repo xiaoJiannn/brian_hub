@@ -13,3 +13,15 @@ export function publishMoment(config: momentRequestConfig) {
     data: config.data,
   });
 }
+export function showUserMoment(config: momentRequestConfig) {
+  return request({
+    url: config.url,
+    method: config.method,
+  });
+}
+export function momentDetail(config: momentRequestConfig) {
+  return request({
+    url: config.url,
+    method: config.method,
+  });
+}

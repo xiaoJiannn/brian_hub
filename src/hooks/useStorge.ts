@@ -1,8 +1,8 @@
 class Storge {
-  setItem(title: string, variable: string) {
+  setItem(title: any, variable: any) {
     window.localStorage.setItem(title, variable);
   }
-  getItem(title: string) {
+  getItem(title: any) {
     const result = window.localStorage.getItem(title);
     return result;
   }

@@ -4,7 +4,7 @@
   </div>
 
   <div class="mesg">
-    <ChatDotRound style="width: 1em; height: 1em" />
+    <SwitchButton style="width: 1em; height: 1em" />
   </div>
   <div class="avatar">
     <template v-for="item in userStore.homeProfile">
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import avatar from "@/components/base/avatar.vue";
-import { Plus, ChatDotRound } from "@element-plus/icons-vue";
+import { Plus, SwitchButton } from "@element-plus/icons-vue";
 import { useClient } from "@/stores/user";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";

@@ -19,9 +19,10 @@
           'card-detail-padding': '10px',
           avatarUrl: item.avatarUrl,
         }"
+        @click="handleMoment(item.id, item.user_id)"
       >
         <div class="moment_btm">
-          <div class="comment" @click="commentClick()">
+          <div class="comment">
             <ChatDotSquare class="momentMes"></ChatDotSquare>
           </div>
           <div class="up">
@@ -37,9 +38,16 @@ import wjCard from "@/components/base/wjCard.vue";
 import areaTopText from "./areaTopText.vue";
 import { ChatDotSquare, Pointer } from "@element-plus/icons-vue";
 import { useMoment } from "@/stores/moment";
-import { ref } from "vue";
+import { useRouter } from "vue-router";
 const momentStore = useMoment();
-const commentClick = () => {};
+const router = useRouter();
+import { useStorge } from "@/hooks/useStorge";
+const handleMoment = (id: number, userId: number) => {
+  useStorge.setItem("currentMoment", id);
+  momentStore.getMomentDetail(id);
+  router.push("/moment/detail");
+
+};
 </script>
 <style scoped>
 .card {
@@ -70,15 +78,6 @@ const commentClick = () => {};
 .up {
   flex: 0.5;
 }
-/* input {
-  border: 1px solid rgba(0, 0, 0, 0.527);
-  margin: 10px;
-  width: 100%;
-  height: 30px;
-}
-input:focus {
-  outline-color: #0969da;
-} */
 
 .submit {
   height: 30px;
