@@ -1,10 +1,7 @@
-export interface wjRequestConfig {
+export interface request {
+  method: "GET" | "POST" | "DELETE" | "PATCH";
   url: string;
   data?: object;
   headers?: object;
-  method: "GET" | "POST" | "DELETE" | "PATCH";
-}
-
-export interface request extends wjRequestConfig {
-  headers?: object;
+  params?: object;
 }

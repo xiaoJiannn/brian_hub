@@ -57,6 +57,9 @@ const router = createRouter({
   routes,
 });
 router.beforeEach((to, from) => {
+  if (to.path === "/home") {
+    // window.location.reload();
+  }
   console.log(to.path);
 });
 export default router;

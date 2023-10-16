@@ -6,7 +6,7 @@ export const timeout = 500000;
 
 export const option = {
   fullscreen: true,
-  text: "loading",
+  text: "载入中",
 };
 
 export class loading {

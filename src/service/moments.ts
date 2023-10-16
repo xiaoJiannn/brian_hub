@@ -4,6 +4,10 @@ export function momentRequest(config: momentRequestConfig) {
   return request({
     url: config.url,
     method: config.method,
+    params: config.params,
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 }
 export function publishMoment(config: momentRequestConfig) {
@@ -17,6 +21,7 @@ export function showUserMoment(config: momentRequestConfig) {
   return request({
     url: config.url,
     method: config.method,
+    params: config.params,
   });
 }
 export function momentDetail(config: momentRequestConfig) {

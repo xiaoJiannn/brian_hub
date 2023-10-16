@@ -11,16 +11,24 @@ export const useMoment = defineStore("moment", {
     moments: [] as any[],
     userMoment: [] as any[],
     momentDetail: [] as any[],
+    momentOffset: 0,
+    momentSize: 5,
+    isAll: false,
   }),
   getters: {},
   actions: {
-    async getRecommendData() {
+    async getRecommendData(isClear: boolean = true) {
       const result = await momentRequest({
         url: "/moment/recommend",
         method: "GET",
+        params: {
+          offset: this.momentOffset,
+          size: this.momentSize,
+        },
       });
+      this.isAll = result.data.isAll;
       const moment = result.data.data;
-      if (this.moments.length !== 0) {
+      if (this.moments.length !== 0 && isClear === true) {
         this.moments = [];
       }
       for (const item of moment) {
